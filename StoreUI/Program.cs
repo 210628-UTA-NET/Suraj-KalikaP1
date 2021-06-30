@@ -27,7 +27,7 @@ namespace StoreUI
                         custMenu = new CustomerMenu();
                         break;
                     case MenuType.ShowCustomerMenu:
-                        custMenu = new ShowCustomerMenu(new StoreBL());
+                        custMenu = new ShowCustomerMenu(new SBL(new Repository()));
                         break;
                     case MenuType.Exit:
                         repeat = false;

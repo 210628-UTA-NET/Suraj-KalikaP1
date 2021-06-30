@@ -4,11 +4,11 @@ using StoreDL;
 using StoreModel;
 namespace StoreBL
 {
-    public class StoreBL : IStoreBL
+    public class SBL : IStoreBL
     {
 
         private IRepository _repo;
-        public StoreBL(IRepository p_repo)
+        public SBL(IRepository p_repo)
         {
             _repo = p_repo;
         }
