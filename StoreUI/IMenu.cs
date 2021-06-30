@@ -1,5 +1,12 @@
 namespace StoreUI
 {
+    public enum MenuType
+    {
+        MainMenu,
+        CustomerMenu,
+        ShowCustomerMenu,
+        Exit
+    }
     public interface IMenu
     {
         /// <summary>
@@ -14,7 +21,7 @@ namespace StoreUI
         /// <returns>Returns a value that will dictate what menu to change to</returns>
 
 
-        string YourChoice();
+        MenuType YourChoice();
     }
 
 }

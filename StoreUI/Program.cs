@@ -1,4 +1,7 @@
 ﻿using System;
+using StoreBL;
+using StoreDL;
+using StoreModel;
 using System.Collections;
 namespace StoreUI
 {
@@ -8,7 +11,7 @@ namespace StoreUI
         {
             IMenu custMenu = new MainMenu();
             bool repeat = true;
-            string currentMenu = "MainMenu";
+            MenuType currentMenu = MenuType.MainMenu;
             while(repeat)
             {
                  Console.Clear();
@@ -16,14 +19,17 @@ namespace StoreUI
                 currentMenu = custMenu.YourChoice();
                 switch(currentMenu)
                 {
-                    case "MainMenu":
+                    case MenuType.MainMenu:
                         custMenu = new MainMenu();
                         break;
 
-                    case "Customer":
+                    case MenuType.CustomerMenu:
                         custMenu = new CustomerMenu();
                         break;
-                    case "Exit":
+                    case MenuType.ShowCustomerMenu:
+                        custMenu = new ShowCustomerMenu(new StoreBL());
+                        break;
+                    case MenuType.Exit:
                         repeat = false;
                         break;
 

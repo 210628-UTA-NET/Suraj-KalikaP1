@@ -1,6 +1,6 @@
 using System;
-using StoreApp;
 using System.Collections;
+using StoreModel;
 
 namespace StoreUI
 {
@@ -18,14 +18,14 @@ namespace StoreUI
             
         }
 
-        public string YourChoice()
+        public MenuType YourChoice()
         {
             string userChoice = Console.ReadLine();
 
             switch(userChoice)
             {
                 case "0":
-                    return "MainMenu";
+                    return MenuType.MainMenu;
                 case "1":
                 Customer customer = new Customer();
                  Console.WriteLine("Please Enter Your Name");
@@ -34,13 +34,18 @@ namespace StoreUI
                 customer.Address = Console.ReadLine();
                 Console.WriteLine("Please enter Your Email Address");
                 customer.Email = Console.ReadLine();
-                customerList.Add(customer);
-                return "CustomerMenu";
+                
+                return MenuType.ShowCustomerMenu;
                 default: 
-                    return "Unknown";
+                    return MenuType.CustomerMenu;
 
 
             }
+        }
+
+        MenuType IMenu.YourChoice()
+        {
+            throw new NotImplementedException();
         }
     }
 }

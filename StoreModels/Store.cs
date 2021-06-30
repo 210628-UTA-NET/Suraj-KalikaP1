@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StoreApp
+namespace StoreModel
 {
     public class Store
     {
