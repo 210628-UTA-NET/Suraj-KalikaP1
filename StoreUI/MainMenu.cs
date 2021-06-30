@@ -32,10 +32,7 @@ public class MainMenu : IMenu
             }
         }
 
-        MenuType IMenu.YourChoice()
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 
 }

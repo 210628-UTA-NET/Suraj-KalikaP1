@@ -43,9 +43,5 @@ namespace StoreUI
             }
         }
 
-        MenuType IMenu.YourChoice()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
