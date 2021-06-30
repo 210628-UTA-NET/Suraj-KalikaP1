@@ -32,7 +32,18 @@ namespace StoreUI
 
         public MenuType YourChoice()
         {
-            throw new NotImplementedException();
+            string userInput = Console.ReadLine();
+
+            switch (userInput)
+            {
+                case "0":
+                    return MenuType.CustomerMenu;
+                default:
+                    Console.WriteLine("Input was not correct");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    return MenuType.ShowCustomerMenu;
         }
     }
+}
 }
