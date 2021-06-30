@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using StoreModel;
-
 namespace StoreDL
 {
     public class Repository : IRepository
@@ -11,8 +10,15 @@ namespace StoreDL
         private const string _filePath = "./../StoreDL/Database/Customer.json";
         private string _jsonString;
         public Customer AddCustomer(Customer p_cust)
+        {   try{
+            _jsonString = p_cust.ToString();
+            File.WriteAllText(_filePath, _jsonString);
+        }
+        catch(System.Exception)
         {
-            throw new NotImplementedException();
+            throw new Exception("Invalid Customer details");
+        }
+          return p_cust; // Need this return need to figure out another return here but this will be temp
         }
 
         public List<Customer> GetAllCustomers()

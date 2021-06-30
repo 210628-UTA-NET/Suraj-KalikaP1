@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using StoreModel;
-
+using StoreBL;
+using StoreDL;
 namespace StoreUI
 {
     public class CustomerMenu : IMenu
     {
         
-
+        private Repository _storeDL;
         public void Menu()
         {
             
@@ -34,7 +35,7 @@ namespace StoreUI
                 customer.Address = Console.ReadLine();
                 Console.WriteLine("Please enter Your Email Address");
                 customer.Email = Console.ReadLine();
-                
+                _storeDL.AddCustomer(customer);
                 return MenuType.ShowCustomerMenu;
                 default: 
                     return MenuType.CustomerMenu;
