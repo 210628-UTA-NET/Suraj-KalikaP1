@@ -8,6 +8,7 @@ namespace StoreUI
     public class CustomerMenu : IMenu
     {
         
+        public static Customer customer = new Customer();
         private Repository _storeDL;
         public void Menu()
         {
@@ -28,7 +29,6 @@ namespace StoreUI
                 case "0":
                     return MenuType.MainMenu;
                 case "1":
-                Customer customer = new Customer();
                  Console.WriteLine("Please Enter Your Name");
                 customer.Name = Console.ReadLine();
                 Console.WriteLine("Please enter Your Address");
