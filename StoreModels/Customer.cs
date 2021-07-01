@@ -17,7 +17,7 @@ namespace StoreModel{
 
         public override string ToString()
         {
-            return "Name: " + Name + Address +Email;
+            return $"Name:  + {Name}, Address:{Address} Email:{Email}";
         }
     }
 
