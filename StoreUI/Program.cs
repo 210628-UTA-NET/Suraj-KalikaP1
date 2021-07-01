@@ -12,6 +12,8 @@ namespace StoreUI
             IMenu custMenu = new MainMenu();
             bool repeat = true;
             MenuType currentMenu = MenuType.MainMenu;
+            IFactory menuFactory = new MenuFactory();
+
             while(repeat)
             {
                  Console.Clear();
@@ -20,14 +22,14 @@ namespace StoreUI
                 switch(currentMenu)
                 {
                     case MenuType.MainMenu:
-                        custMenu = new MainMenu();
+                        custMenu = menuFactory.GetMenu(MenuType.MainMenu);
                         break;
 
                     case MenuType.CustomerMenu:
-                        custMenu = new CustomerMenu();
+                        custMenu = menuFactory.GetMenu(MenuType.CustomerMenu);
                         break;
                     case MenuType.ShowCustomerMenu:
-                        custMenu = new ShowCustomerMenu(new SBL(new Repository()));
+                        custMenu = menuFactory.GetMenu(MenuType.ShowCustomerMenu);
                         break;
                     case MenuType.Exit:
                         repeat = false;
