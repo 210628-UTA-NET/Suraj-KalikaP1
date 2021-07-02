@@ -10,15 +10,13 @@ namespace StoreDL
         private const string _filePath = "./../StoreDL/Database/Customer.json";
         private string _jsonString;
         public Customer AddCustomer(Customer p_cust)
-        {   try{
-            _jsonString = p_cust.ToString();
-            File.WriteAllText(_filePath, _jsonString);
-        }
-        catch(System.Exception)
-        {
-            throw new Exception("Invalid Customer details");
-        }
-          return p_cust; // Need this return need to figure out another return here but this will be temp
+        {   
+            List<Customer> listofCustomers = this.GetAllCustomers();
+            listofCustomers.Add(p_cust);
+
+            _jsonString = JsonSerializer.Serialize(listofCustomers, new JsonSerializerOptions{WriteIndented = true});
+            File.WriteAllText(_filePath,_jsonString);
+            return p_cust;
         }
 
         public List<Customer> GetAllCustomers()

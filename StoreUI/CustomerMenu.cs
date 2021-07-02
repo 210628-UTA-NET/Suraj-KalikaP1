@@ -8,8 +8,13 @@ namespace StoreUI
     public class CustomerMenu : IMenu
     {
         
-        public static Customer customer = new Customer();
-        private Repository _storeDL;
+        private static Customer customer = new Customer();
+        private IStoreBL _storeBL;
+
+        public CustomerMenu(SBL p_custBL)
+        {
+            _storeBL = p_custBL;
+        }
         public void Menu()
         {
             
@@ -35,7 +40,7 @@ namespace StoreUI
                 customer.Address = Console.ReadLine();
                 Console.WriteLine("Please enter Your Email Address");
                 customer.Email = Console.ReadLine();
-                _storeDL.AddCustomer(customer);
+                _storeBL.AddCustomer(customer);
                 return MenuType.ShowCustomerMenu;
                 default: 
                     return MenuType.CustomerMenu;
