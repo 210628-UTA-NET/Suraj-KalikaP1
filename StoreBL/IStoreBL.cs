@@ -12,6 +12,8 @@ namespace StoreBL
     {
         
         List<Customer> GetAllCustomers();
+
+        Customer AddCustomer(Customer p_cust);
     }
 
 

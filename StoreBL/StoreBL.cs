@@ -12,6 +12,13 @@ namespace StoreBL
         {
             _repo = p_repo;
         }
+
+        public Customer AddCustomer(Customer p_cust)
+        {
+            p_cust.Email.Contains("@");
+            return _repo.AddCustomer(p_cust);
+        }
+
         public List<Customer> GetAllCustomers()
         {
             return _repo.GetAllCustomers();

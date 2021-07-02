@@ -12,7 +12,7 @@ namespace StoreUI
                 case MenuType.MainMenu:
                     return new MainMenu();
                 case MenuType.CustomerMenu:
-                    return new CustomerMenu();
+                    return new CustomerMenu(new SBL(new Repository()));
                 case MenuType.ShowCustomerMenu:
                     return new ShowCustomerMenu(new SBL(new Repository()));
                 default:

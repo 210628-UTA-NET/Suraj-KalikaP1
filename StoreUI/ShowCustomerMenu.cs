@@ -33,7 +33,7 @@ namespace StoreUI
         public MenuType YourChoice()
         {
             string userInput = Console.ReadLine();
-
+          //  log.Logger = new LoggerConfiguration().CreateLogger();
             switch (userInput)
             {
                 case "0":
