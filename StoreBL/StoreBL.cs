@@ -13,6 +13,10 @@ namespace StoreBL
             _repo = p_repo;
         }
 
+        public Customer SearchCustomer(List<Customer> _customerList)
+        {
+            return null; //Here I will implement the Logic after creating the DL methods.
+        }
         public Customer AddCustomer(Customer p_cust)
         {
             p_cust.Email.Contains("@");

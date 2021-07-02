@@ -14,6 +14,7 @@ namespace StoreBL
         List<Customer> GetAllCustomers();
 
         Customer AddCustomer(Customer p_cust);
+        Customer SearchCustomer(List<Customer> _customerList);
     }
 
 
