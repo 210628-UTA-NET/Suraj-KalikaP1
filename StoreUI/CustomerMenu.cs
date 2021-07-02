@@ -20,6 +20,7 @@ namespace StoreUI
             
             Console.WriteLine("Welcome to the Customer Menu!");
             Console.WriteLine("What would you like to do?");
+            Console.WriteLine("[2] Search for a Customer");
             Console.WriteLine("[1] Add customer details");
             Console.WriteLine("[0] Go Back");
             
@@ -42,6 +43,8 @@ namespace StoreUI
                 customer.Email = Console.ReadLine();
                 _storeBL.AddCustomer(customer);
                 return MenuType.ShowCustomerMenu;
+                case "2":
+                    return MenuType.FindCustomerMenu;
                 default: 
                     return MenuType.CustomerMenu;
 

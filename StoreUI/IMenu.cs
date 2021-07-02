@@ -5,6 +5,8 @@ namespace StoreUI
         MainMenu,
         CustomerMenu,
         ShowCustomerMenu,
+
+        FindCustomerMenu,
         Exit
     }
     public interface IMenu
