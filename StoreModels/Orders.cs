@@ -8,7 +8,7 @@ namespace StoreModel
     {
         public Orders(){}
 
-
+        public string Id{get;set;}
         public List<LineItems> LineItems {get;set;}
 
         public string Location {get;set;}
