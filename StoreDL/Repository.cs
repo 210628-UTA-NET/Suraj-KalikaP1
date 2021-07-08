@@ -17,13 +17,16 @@ namespace StoreDL
         
         public Customer AddCustomer(Customer p_cust)
         {   
-            // List<Customer> listofCustomers = this.GetAllCustomers();
-            // listofCustomers.Add(p_cust);
 
-            // _jsonString = JsonSerializer.Serialize(listofCustomers, new JsonSerializerOptions{WriteIndented = true});
-            // File.WriteAllText(_filePath,_jsonString);
-            // return p_cust;
-            throw new System.NotImplementedException();
+            _context.Customers.Add(new Entities.Customer{
+                Id = p_cust.Id,
+                CustomerName = p_cust.Name,
+                Address = p_cust.Address,
+                Email = p_cust.Email
+            });
+
+            _context.SaveChanges();
+            return p_cust;
         }
 
         public List<Customer> GetAllCustomers()
