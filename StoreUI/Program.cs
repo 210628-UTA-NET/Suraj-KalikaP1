@@ -9,7 +9,7 @@ namespace StoreUI
     {
         static void Main(string[] args)
         {
-            IMenu custMenu = new MainMenu();
+            IMenu menu = new MainMenu();
             bool repeat = true;
             MenuType currentMenu = MenuType.MainMenu;
             IFactory menuFactory = new MenuFactory();
@@ -17,22 +17,27 @@ namespace StoreUI
             while(repeat)
             {
                  Console.Clear();
-                custMenu.Menu();
-                currentMenu = custMenu.YourChoice();
+                menu.Menu();
+                currentMenu = menu.YourChoice();
                 switch(currentMenu)
                 {
                     case MenuType.MainMenu:
-                        custMenu = menuFactory.GetMenu(MenuType.MainMenu);
+                        menu = menuFactory.GetMenu(MenuType.MainMenu);
                         break;
-
                     case MenuType.CustomerMenu:
-                        custMenu = menuFactory.GetMenu(MenuType.CustomerMenu);
+                        menu = menuFactory.GetMenu(MenuType.CustomerMenu);
                         break;
                     case MenuType.ShowCustomerMenu:
-                        custMenu = menuFactory.GetMenu(MenuType.ShowCustomerMenu);
+                        menu = menuFactory.GetMenu(MenuType.ShowCustomerMenu);
                         break;
                     case MenuType.FindCustomerMenu:
-                        custMenu = menuFactory.GetMenu(MenuType.FindCustomerMenu);
+                        menu = menuFactory.GetMenu(MenuType.FindCustomerMenu);
+                        break;
+                    case MenuType.StoreMenu:
+                        menu = menuFactory.GetMenu(MenuType.StoreMenu);
+                        break;
+                    case MenuType.StoreManageMenu:
+                        menu = menuFactory.GetMenu(MenuType.StoreMenu);
                         break;
                     case MenuType.Exit:
                         repeat = false;

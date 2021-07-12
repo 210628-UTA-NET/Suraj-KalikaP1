@@ -8,6 +8,11 @@ namespace StoreUI
     {
         private static StoreFront store = new StoreFront();
         private IStoreFrontBL _storeBL;
+
+        public StoreMenu(StoreFrontBL p_storeBL)
+        {
+            _storeBL = p_storeBL;
+        }
         public void Menu()
         {
            Console.WriteLine("Welcome to the Store Menu!");

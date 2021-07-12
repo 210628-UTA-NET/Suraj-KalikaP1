@@ -9,7 +9,7 @@ public class MainMenu : IMenu
         {
             Console.WriteLine("Welcome to the Main Menu!");
             Console.WriteLine("what would you like to do?");
-            Console.WriteLine("[2]Store Info");
+            Console.WriteLine("[2] Store Info");
              Console.WriteLine("[1] Customer Info");
             Console.WriteLine("[0] Exit");
         }

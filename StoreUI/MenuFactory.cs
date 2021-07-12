@@ -29,7 +29,7 @@ namespace StoreUI
                 case MenuType.MainMenu:
                     return new MainMenu();
                 case MenuType.StoreMenu:
-                    return new StoreMenu();
+                    return new StoreMenu(new StoreFrontBL(new StoreRepository(new customerDBContext(options))));
                 case MenuType.StoreManageMenu:
                     return new StoreManageMenu(new StoreFrontBL(new StoreRepository(new customerDBContext(options))));
                 case MenuType.CustomerMenu:
