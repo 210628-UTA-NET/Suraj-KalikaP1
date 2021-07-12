@@ -8,13 +8,13 @@ namespace StoreBL
     /// Handles all the business logic for store model
     /// In charge of processing, cleaning, and validation of data
     /// </summary>
-    public interface IStoreBL
+    public interface ICustomerBL
     {
         
         List<Customer> GetAllCustomers();
 
         Customer AddCustomer(Customer p_cust);
-        Customer SearchCustomer(List<Customer> _customerList);
+        Customer FindCustomerByName(String p_custName);
     }
 
 
