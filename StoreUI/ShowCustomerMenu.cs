@@ -7,18 +7,18 @@ namespace StoreUI
 {
     public class ShowCustomerMenu : IMenu
     {
-        private IStoreBL _storeBL;
+        private ICustomerBL _customerBL;
 
-        public ShowCustomerMenu(IStoreBL p_cust)
+        public ShowCustomerMenu(ICustomerBL p_cust)
         {
-            _storeBL = p_cust;
+            _customerBL = p_cust;
         }
         public void Menu()
         {
             
             Console.WriteLine("List of Customers");
 
-            List<Customer> customers = _storeBL.GetAllCustomers();
+            List<Customer> customers = _customerBL.GetAllCustomers();
 
             foreach (Customer cust in customers)
             {

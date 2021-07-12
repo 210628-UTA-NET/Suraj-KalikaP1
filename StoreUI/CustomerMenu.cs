@@ -9,11 +9,11 @@ namespace StoreUI
     {
         
         private static Customer customer = new Customer();
-        private IStoreBL _storeBL;
+        private ICustomerBL _customerBL;
 
-        public CustomerMenu(SBL p_custBL)
+        public CustomerMenu(CustomerBL p_custBL)
         {
-            _storeBL = p_custBL;
+            _customerBL = p_custBL;
         }
         public void Menu()
         {
@@ -35,13 +35,16 @@ namespace StoreUI
                 case "0":
                     return MenuType.MainMenu;
                 case "1":
-                 Console.WriteLine("Please Enter Your Name");
+                 Console.WriteLine("Please Enter Customer Name");
                 customer.Name = Console.ReadLine();
-                Console.WriteLine("Please enter Your Address");
+                Console.WriteLine("Please enter Customer Address");
                 customer.Address = Console.ReadLine();
-                Console.WriteLine("Please enter Your Email Address");
+                Console.WriteLine("Please enter Customer Email Address");
                 customer.Email = Console.ReadLine();
-                _storeBL.AddCustomer(customer);
+                Console.WriteLine("Please enter Customer Phone Number");
+                 customer.PhoneNumber = Console.ReadLine();
+                
+                _customerBL.AddCustomer(customer);
                 return MenuType.ShowCustomerMenu;
                 case "2":
                     return MenuType.FindCustomerMenu;

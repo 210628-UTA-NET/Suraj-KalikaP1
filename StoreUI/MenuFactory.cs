@@ -20,7 +20,7 @@ namespace StoreUI
             //Grabs our connectionString from our appsetting.json
             string connectionString = configuration.GetConnectionString("Reference2DB");
 
-            DbContextOptions<storeDBContext> options = new DbContextOptionsBuilder<storeDBContext>()
+            DbContextOptions<customerDBContext> options = new DbContextOptionsBuilder<customerDBContext>()
                 .UseSqlServer(connectionString)
                 .Options;
 
@@ -29,11 +29,11 @@ namespace StoreUI
                 case MenuType.MainMenu:
                     return new MainMenu();
                 case MenuType.CustomerMenu:
-                    return new CustomerMenu(new SBL(new Repository(new storeDBContext(options))));
+                    return new CustomerMenu(new CustomerBL(new CustomerRepository(new customerDBContext(options))));
                 case MenuType.ShowCustomerMenu:
-                    return new ShowCustomerMenu(new SBL(new Repository(new storeDBContext(options))));
+                    return new ShowCustomerMenu(new CustomerBL(new CustomerRepository(new customerDBContext(options))));
                 case MenuType.FindCustomerMenu:
-                    return new FindCustomerMenu();
+                    return new FindCustomerMenu(new CustomerBL(new CustomerRepository(new customerDBContext(options))));
                 default:
                     return null;
                 
