@@ -16,6 +16,11 @@ namespace StoreModel
 
          public List<Orders> Orders {get;set;}
 
+        public override string ToString()
+        {
+            return "ID: "+Id+"| Name: " + Name+"| Address: " + Address;
+        }
+
         }
 
 
