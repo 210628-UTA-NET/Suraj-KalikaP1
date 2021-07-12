@@ -11,5 +11,9 @@ namespace StoreDL.Entities
         public string CustomerName { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
+        public int? Orders { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public virtual Order OrdersNavigation { get; set; }
     }
 }
