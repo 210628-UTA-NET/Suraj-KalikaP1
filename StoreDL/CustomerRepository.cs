@@ -6,11 +6,11 @@ using StoreModel;
 using System.Linq;
 namespace StoreDL
 {
-    public class Repository : IRepository
+    public class CustomerRepository : ICustomerRepository
     {
-        private Entities.storeDBContext _context;
+        private Entities.customerDBContext _context;
         
-        public Repository(Entities.storeDBContext p_context)
+        public CustomerRepository(Entities.customerDBContext p_context)
         {
             _context = p_context;
         }
@@ -29,6 +29,22 @@ namespace StoreDL
             return p_cust;
         }
 
+        public Customer FindCustomerByName(String p_customerName)
+        {
+            List<Customer> allCustomers = GetAllCustomers();
+            foreach(Customer cust in allCustomers)
+            {   
+                if(p_customerName == cust.Name)
+                {
+                    return cust; // Will return the first Customer object if it contains the Inputted Name
+                                // Either Validation or improved logic to show List of Customers Necessary
+                }
+                    
+            }
+            
+           throw new System.IndexOutOfRangeException();
+        }
+
         public List<Customer> GetAllCustomers()
         {
             return _context.Customers.Select(
@@ -38,7 +54,8 @@ namespace StoreDL
                             Id = cust.Id,
                             Name = cust.CustomerName,
                             Address = cust.Address,
-                            Email = cust.Email
+                            Email = cust.Email,
+                            PhoneNumber = cust.PhoneNumber
                         }
             ).ToList(); 
             
