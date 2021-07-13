@@ -42,15 +42,22 @@ namespace StoreUI
                     Console.WriteLine("Please enter Customer Name");
                    customer.Name =  Console.ReadLine();
                   Console.WriteLine(_customerBL.FindCustomerByName(customer.Name));
+                  Console.WriteLine("[1] Place an order for this Customer");
                   Console.WriteLine("[0] Go Back"); 
                   String exitInput = Console.ReadLine();
-                  while(exitInput != "0")
+                  if(exitInput=="1")
+                        return MenuType.PlaceOrderMenu;
+                  else if (exitInput != "0")
                   {
-                      Console.WriteLine("Incorrect input. Please try again.");
-                      Console.WriteLine("[0] Go Back"); 
-                      exitInput = Console.ReadLine();
+                      return MenuType.CustomerMenu;
                   }
-                    return MenuType.FindCustomerMenu; //Need to add onto here
+                    else
+                    {
+                        Console.WriteLine("Incorrect input. Please try again.");
+                        Console.WriteLine("Press ENTER to continue");
+                         Console.ReadLine();
+                         return MenuType.CustomerMenu;
+                    } //Need to add onto here
                 case "3":
                     return MenuType.ShowCustomerMenu;
                 default:

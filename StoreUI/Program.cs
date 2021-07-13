@@ -1,8 +1,4 @@
 ﻿using System;
-using StoreBL;
-using StoreDL;
-using StoreModel;
-using System.Collections;
 namespace StoreUI
 {
     class Program
@@ -37,7 +33,13 @@ namespace StoreUI
                         menu = menuFactory.GetMenu(MenuType.StoreMenu);
                         break;
                     case MenuType.StoreManageMenu:
-                        menu = menuFactory.GetMenu(MenuType.StoreMenu);
+                        menu = menuFactory.GetMenu(MenuType.StoreManageMenu);
+                        break;
+                    case MenuType.ShowInventoryMenu:
+                        menu = menuFactory.GetMenu(MenuType.ShowInventoryMenu);
+                        break;
+                    case MenuType.PlaceOrderMenu:
+                        menu = menuFactory.GetMenu(MenuType.PlaceOrderMenu);
                         break;
                     case MenuType.Exit:
                         repeat = false;

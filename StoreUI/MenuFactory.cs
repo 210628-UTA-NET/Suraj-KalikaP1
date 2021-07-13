@@ -32,6 +32,10 @@ namespace StoreUI
                     return new StoreMenu(new StoreFrontBL(new StoreRepository(new customerDBContext(options))));
                 case MenuType.StoreManageMenu:
                     return new StoreManageMenu(new StoreFrontBL(new StoreRepository(new customerDBContext(options))));
+                case MenuType.ShowInventoryMenu:
+                    return new ShowInventoryMenu(new StoreFrontBL(new StoreRepository(new customerDBContext(options))));
+               case MenuType.PlaceOrderMenu:
+                    return new PlaceOrderMenu(new StoreFrontBL(new StoreRepository(new customerDBContext(options))),new CustomerBL(new CustomerRepository(new customerDBContext(options))));
                 case MenuType.CustomerMenu:
                     return new CustomerMenu(new CustomerBL(new CustomerRepository(new customerDBContext(options))));
                 case MenuType.ShowCustomerMenu:

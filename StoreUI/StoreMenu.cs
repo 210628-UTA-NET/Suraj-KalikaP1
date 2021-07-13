@@ -7,50 +7,38 @@ namespace StoreUI
     public class StoreMenu : IMenu
     {
         private static StoreFront store = new StoreFront();
-        private IStoreFrontBL _storeBL;
-
-        public StoreMenu(StoreFrontBL p_storeBL)
+        private IStoreFrontBL _storeFrontBL;
+        
+        public StoreMenu(StoreFrontBL p_storeFrontBL)
         {
-            _storeBL = p_storeBL;
+            _storeFrontBL = p_storeFrontBL;
         }
         public void Menu()
         {
            Console.WriteLine("Welcome to the Store Menu!");
-            Console.WriteLine("What would you like to do?");
-            Console.WriteLine("[1] Choose a Store");
+            Console.WriteLine("Please Select a Store");
+             List<StoreFront> stores = _storeFrontBL.GetAllStoreFronts();
+                foreach(StoreFront store in stores)
+                {
+                    Console.WriteLine("["+store.Id+"] "+store.Name +" Located at "+ store.Address);
+                }
             Console.WriteLine("[0] Go Back");
         }
 
         public MenuType YourChoice()
         {
+            List<StoreFront> stores = _storeFrontBL.GetAllStoreFronts();//had to run this again should figure out how to only declare list once
+            StoreManageMenu storeChoice = new StoreManageMenu(_storeFrontBL);
             string userChoice = Console.ReadLine();
-
             switch(userChoice)
             {
                 case "0":
                     return MenuType.MainMenu;
                 case "1":
-                    List<StoreFront> stores = _storeBL.GetAllStoreFronts();
-                    foreach(StoreFront store in stores)
-                    {
-                        Console.WriteLine(store);
-                    }
-                    Console.WriteLine("Select a Store based on Id");
-                    string storeChoice = Console.ReadLine();
-                    switch(storeChoice)
-                    {
-                        case "1":
-                        store.Id = 1;
-                        return MenuType.StoreManageMenu;
-                        default:
-                        Console.WriteLine("Input was not correct");
-                        Console.WriteLine("Press Enter to continue");
-                        Console.ReadLine();
-                        return MenuType.StoreMenu;
-                        
-                    }
-
+                    storeChoice.currentStore(stores[0]); // index starts at 0 for the list so 1-1 = 0
+                    return MenuType.StoreManageMenu;
                 default:
+                    Console.WriteLine("Invalid store selection");
                     return MenuType.StoreMenu;
             }
         }
