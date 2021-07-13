@@ -13,6 +13,12 @@ namespace StoreBL
         {
             _repo = p_repo;
         }
+
+        public LineItems AddInventory(LineItems p_lineitem, int amount)
+        {
+           return _repo.AddInventory(p_lineitem,amount);
+        }
+
         public List<StoreFront> GetAllStoreFronts()
         {
             return _repo.GetAllStoreFronts();

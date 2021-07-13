@@ -39,7 +39,7 @@ namespace StoreDL
         }
         public List<LineItems>  getAllInventory()
         {
-            return  _context.LineItems.Select(
+            List<LineItems> inventory=  _context.LineItems.Select(
                 inventory =>
                     new LineItems
                     {   
@@ -49,6 +49,34 @@ namespace StoreDL
                         Quantity = (int)inventory.Quantity
                     }
             ).ToList();
+
+            List<Products> allProducts = _context.Products.Select(
+                prod =>
+                    new Products
+                    {
+                        Id =  (int) prod.Id,
+                        Name = prod.Name,
+                        Description = prod.Description,
+                        Category = prod.Category,
+                        Price = (double)prod.Price
+                    }
+            ).ToList();
+
+            foreach(LineItems lineItems in inventory)
+            {
+                foreach(Products prod in allProducts )
+                {
+                    if(lineItems.ProductId == prod.Id){
+                        lineItems.ProductName = prod.Name;
+                    }
+
+                }
+            }
+
+            
+
+            return inventory;
+            
         }
         public List<Orders> GetOrders(StoreFront p_storeFront)
         {
@@ -56,6 +84,35 @@ namespace StoreDL
         }
 
         public List<Products> GetProducts(StoreFront p_storeFront)
+        {   
+            List<LineItems> storeInventory = GetInventory(p_storeFront);
+            List<Products> allProducts = _context.Products.Select(
+                prod =>
+                    new Products
+                    {
+                        Id =  (int) prod.Id,
+                        Name = prod.Name,
+                        Description = prod.Description,
+                        Category = prod.Category,
+                        Price = (double)prod.Price
+                    }
+            ).ToList();
+            List<Products> storeProducts = new List<Products>();  
+             foreach(Products prod in allProducts )
+             {
+                 foreach(LineItems lineItems in storeInventory)
+                {
+                 if(prod.Id== lineItems.ProductId)
+                 {
+                     storeProducts.Add(prod);
+                 }
+
+                }
+             }
+             return storeProducts;
+        }
+
+        public LineItems AddInventory(LineItems p_lineItem, int amount)
         {
             throw new NotImplementedException();
         }
