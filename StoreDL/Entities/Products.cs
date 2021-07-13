@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace StoreDL.Entities
 {
-    public partial class Product
+    public partial class Products
     {
-        public Product()
+        public Products()
         {
             LineItems = new HashSet<LineItem>();
         }

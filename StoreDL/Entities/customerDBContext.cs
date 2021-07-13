@@ -20,8 +20,9 @@ namespace StoreDL.Entities
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<LineItem> LineItems { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<StoreFront> StoreFronts { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -48,11 +49,6 @@ namespace StoreDL.Entities
                 entity.Property(e => e.PhoneNumber)
                     .HasMaxLength(15)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.OrdersNavigation)
-                    .WithMany(p => p.Customers)
-                    .HasForeignKey(d => d.Orders)
-                    .HasConstraintName("FK__Customer__Orders__03F0984C");
             });
 
             modelBuilder.Entity<LineItem>(entity =>
@@ -70,13 +66,20 @@ namespace StoreDL.Entities
 
             modelBuilder.Entity<Order>(entity =>
             {
+                entity.Property(e => e.TotalPrice).HasColumnType("decimal(10, 2)");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.CustomerId)
+                    .HasConstraintName("FK__Orders__Customer__04E4BC85");
+
                 entity.HasOne(d => d.LineItem)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.LineItemId)
                     .HasConstraintName("FK__Orders__LineItem__01142BA1");
             });
 
-            modelBuilder.Entity<Product>(entity =>
+            modelBuilder.Entity<Products>(entity =>
             {
                 entity.Property(e => e.Category)
                     .HasMaxLength(50)
