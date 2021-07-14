@@ -24,6 +24,19 @@ namespace StoreBL
            return _repo.AddInventory(p_lineitem,amount);
         }
 
+        public LineItems RemoveInventory(LineItems p_lineItem, int amount)
+        {
+            if(amount<0)
+            {
+                throw new System.ArithmeticException();
+            }
+            if(p_lineItem.Quantity-amount<=0)
+            {
+                throw new System.ArithmeticException();
+            }
+            return _repo.RemoveInventory(p_lineItem,amount);
+        }
+
         public List<StoreFront> GetAllStoreFronts()
         {
             return _repo.GetAllStoreFronts();
@@ -47,6 +60,8 @@ namespace StoreBL
         {
             return _repo.AddOrder(p_storeFront,p_customer,p_order);
         }
+
+
     }
 
 }

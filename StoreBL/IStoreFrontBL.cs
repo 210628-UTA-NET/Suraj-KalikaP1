@@ -11,6 +11,7 @@ namespace StoreBL
          List<Products> GetProducts(StoreFront p_storeFront);
 
          LineItems AddInventory(LineItems p_lineitem, int amount);
+         LineItems RemoveInventory(LineItems p_lineItem, int amount);
          List<Orders> GetOrders(StoreFront p_storeFront);
 
          Orders AddOrder(StoreFront p_storeFront, Customer p_customer, Orders p_order);
