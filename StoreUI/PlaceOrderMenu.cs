@@ -101,11 +101,11 @@ namespace StoreUI
                                     int count=0;
                                      foreach(Products prod in shoppingCart)
                                      {
-                                    Console.WriteLine(prod+" Quantity:"+shoppingQuantity[count]+" Price: $"+prod.Price*shoppingQuantity[count]);
+                                    Console.WriteLine(prod+" Quantity:"+shoppingQuantity[count]+" Price: $"+Math.Round(prod.Price*shoppingQuantity[count]),2);
                                     count=+1;
                                     Console.WriteLine("-------------------------");
                                          }
-                                      Console.WriteLine("Total Price: "+totalPrice);
+                                      Console.WriteLine("Total Price: "+Math.Round(totalPrice, 2));
                                        Console.WriteLine("[1] Confirm Purchase");
                                       Console.WriteLine("[0] Cancel Order and Go back");
                                       endChoice = Console.ReadLine();
@@ -187,11 +187,11 @@ namespace StoreUI
                                     int count=0;
                                      foreach(Products prod in shoppingCart)
                                      {
-                                    Console.WriteLine(prod+" Quantity:"+shoppingQuantity[count]+" Price: $"+prod.Price*shoppingQuantity[count]);
+                                    Console.WriteLine(prod+" Quantity:"+shoppingQuantity[count]+" Price: $"+Math.Round(prod.Price*shoppingQuantity[count]),2);
                                     count=+1;
                                     Console.WriteLine("-------------------------");
                                          }
-                                      Console.WriteLine("Total Price: $"+totalPrice);
+                                      Console.WriteLine("Total Price: $"+Math.Round(totalPrice, 2));
                                        Console.WriteLine("[1] Confirm Purchase");
                                       Console.WriteLine("[0] Cancel Order and Go back");
                                       endChoice = Console.ReadLine();
