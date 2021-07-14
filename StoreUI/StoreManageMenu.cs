@@ -33,20 +33,22 @@ namespace StoreUI
         public MenuType YourChoice()
         {
             string userInput = Console.ReadLine();
-
+            StoreOrderHistoryMenu orderHistory = new StoreOrderHistoryMenu(_storeFrontBL);
             switch(userInput)
             {   
                 case "0":
                     return MenuType.StoreMenu;
                 case "1":
-                //Need to add implementation here 
-                    return MenuType.StoreManageMenu;
+                    orderHistory.currentStore(_storeFront);
+                    return MenuType.StoreOrderHistoryMenu;
                 case "2":
                     currentStore(_storeFront);
                     return MenuType.ShowInventoryMenu;
                 default:
                     currentStore(_storeFront);
                 Console.WriteLine("Invalid Selection");
+                Console.WriteLine("Press Enter to Continue.");
+                Console.ReadLine();
                     return MenuType.StoreManageMenu;
             }
         }

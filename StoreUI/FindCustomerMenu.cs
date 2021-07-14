@@ -12,9 +12,12 @@ namespace StoreUI
     
     private ICustomerBL _customerBL;
 
-    public FindCustomerMenu(CustomerBL p_custBL)
+    private IStoreFrontBL _storeBL;
+
+    public FindCustomerMenu(StoreFrontBL p_storeBL, CustomerBL p_custBL)
     {
         _customerBL = p_custBL;
+        _storeBL = p_storeBL;
     }
         public void Menu()
         {
@@ -28,8 +31,9 @@ namespace StoreUI
 
         public MenuType YourChoice()
         {
+            CustomerOrderHistoryMenu custOrderHist = new CustomerOrderHistoryMenu(_customerBL);
             string userChoice = Console.ReadLine();
-
+                    PlaceOrderMenu newOrder = new PlaceOrderMenu(_storeBL,_customerBL);
             switch(userChoice)
             {
                 case "0":
@@ -42,11 +46,20 @@ namespace StoreUI
                     Console.WriteLine("Please enter Customer Name");
                    customer.Name =  Console.ReadLine();
                   Console.WriteLine(_customerBL.FindCustomerByName(customer.Name));
+                  Console.WriteLine("[2] Order History for this Customer");
                   Console.WriteLine("[1] Place an order for this Customer");
                   Console.WriteLine("[0] Go Back"); 
                   String exitInput = Console.ReadLine();
-                  if(exitInput=="1")
+                  if(exitInput =="2")
+                  {
+                    custOrderHist.currentCustomer(_customerBL.FindCustomerByName(customer.Name));
+                    return MenuType.CustomerOrderHistoryMenu;
+                  }
+                  else if(exitInput=="1")
+                  {
+                    newOrder.customerInformation(_customerBL.FindCustomerByName(customer.Name));
                         return MenuType.PlaceOrderMenu;
+                  }
                   else if (exitInput != "0")
                   {
                       return MenuType.CustomerMenu;
