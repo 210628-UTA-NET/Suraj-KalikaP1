@@ -163,7 +163,7 @@ namespace StoreDL
         {
                 
 
-             _context.LineItems.First(
+           int? x =  _context.LineItems.First(
                 x=> 
                 x.Id == p_lineItem.Id
             ).Quantity = _context.LineItems.First(
@@ -171,6 +171,11 @@ namespace StoreDL
                 x.Id == p_lineItem.Id
             ).Quantity - amount;
             
+            if(x<0)
+            {
+                throw new System.ArithmeticException(); // so inventory can't be negative
+            }
+
             _context.SaveChanges();
         
             return p_lineItem;

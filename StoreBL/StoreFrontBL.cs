@@ -30,10 +30,6 @@ namespace StoreBL
             {
                 throw new System.ArithmeticException();
             }
-            if(p_lineItem.Quantity-amount<=0)
-            {
-                throw new System.ArithmeticException();
-            }
             return _repo.RemoveInventory(p_lineItem,amount);
         }
 
