@@ -24,7 +24,17 @@ namespace StoreDL
                     }
             ).ToList();
         }
-
+        public Orders AddOrder(StoreFront p_storeFront, Customer p_customer, Orders p_order)
+        {
+            _context.Orders.Add(new Entities.Order{
+                Id = p_order.Id,
+                StoreId = p_storeFront.Id,
+                CustomerId = p_customer.Id,
+                TotalPrice = (decimal)p_order.TotalPrice
+            });
+            _context.SaveChanges();
+            return p_order;
+        }
         public List<LineItems> GetInventory(StoreFront p_storeFront)
         {
             List<LineItems> allInventory = getAllInventory();
@@ -73,14 +83,30 @@ namespace StoreDL
                 }
             }
 
-            
-
             return inventory;
             
         }
         public List<Orders> GetOrders(StoreFront p_storeFront)
         {
-            throw new NotImplementedException();
+            List<Orders> allOrders = _context.Orders.Select(
+                order=>
+                    new Orders
+                    {
+                        Id = order.Id,
+                        storeId = (int)order.StoreId,
+                        customerId =(int)order.CustomerId,
+                        TotalPrice = (double)order.TotalPrice
+                    }
+            ).ToList();
+            List<Orders> storeOrders = new List<Orders>();
+            foreach(Orders order in allOrders)
+            {
+                if(order.storeId == p_storeFront.Id)
+                    {
+                        storeOrders.Add(order);
+                    }
+            }
+            return storeOrders;
         }
 
         public List<Products> GetProducts(StoreFront p_storeFront)
@@ -114,7 +140,20 @@ namespace StoreDL
 
         public LineItems AddInventory(LineItems p_lineItem, int amount)
         {
-            throw new NotImplementedException();
+                
+
+             _context.LineItems.First(
+                x=> 
+                x.Id == p_lineItem.Id
+            ).Quantity = _context.LineItems.First(
+                x=> 
+                x.Id == p_lineItem.Id
+            ).Quantity + amount;
+            
+            _context.SaveChanges();
+        
+            return p_lineItem;
+
         }
     }
 

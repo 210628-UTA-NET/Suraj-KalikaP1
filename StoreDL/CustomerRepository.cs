@@ -22,7 +22,8 @@ namespace StoreDL
                 Id = p_cust.Id,
                 CustomerName = p_cust.Name,
                 Address = p_cust.Address,
-                Email = p_cust.Email
+                Email = p_cust.Email,
+                PhoneNumber = p_cust.PhoneNumber
             });
 
             _context.SaveChanges();
@@ -34,7 +35,7 @@ namespace StoreDL
             List<Customer> allCustomers = GetAllCustomers();
             foreach(Customer cust in allCustomers)
             {   
-                if(p_customerName == cust.Name)
+                if(p_customerName.Contains(cust.Name))
                 {
                     return cust; // Will return the first Customer object if it contains the Inputted Name
                                 // Either Validation or improved logic to show List of Customers Necessary
@@ -59,6 +60,28 @@ namespace StoreDL
                         }
             ).ToList(); 
             
+        }
+
+        public List<Orders> GetOrders(Customer p_customer)
+        {
+            List<Orders> allOrders = _context.Orders.Select(
+                order=>
+                    new Orders
+                    {   Id = order.Id,
+                        storeId = (int)order.StoreId,
+                        customerId =(int)order.CustomerId,
+                        TotalPrice = (double)order.TotalPrice
+                    }
+            ).ToList();
+            List<Orders> customerOrders = new List<Orders>();
+            foreach(Orders order in allOrders)
+            {
+                if(order.customerId == p_customer.Id)
+                    {
+                        customerOrders.Add(order);
+                    }
+            }
+            return customerOrders;
         }
 
         public Customer GetCustomer(Customer p_cust)
