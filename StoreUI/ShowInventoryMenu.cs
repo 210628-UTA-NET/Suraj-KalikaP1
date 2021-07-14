@@ -31,7 +31,7 @@ namespace StoreUI
                 case "0":
                     return MenuType.StoreManageMenu;
                 case "1":
-                Console.WriteLine("Which Item(Id) to restock?");
+               Console.WriteLine("Which Item(Id) to restock?");
                 Console.WriteLine("Inventory");
                     Console.WriteLine("----------");
                    
@@ -39,14 +39,16 @@ namespace StoreUI
                     {
                         Console.WriteLine(item);
                     }
+                    Console.WriteLine("Which Item(Id) to restock?");
                     string inventoryInput = Console.ReadLine();
                     foreach(LineItems item in lineItems)
                     {
                         if(inventoryInput == item.Id.ToString())
                         {
-                            Console.WriteLine("How many "+item.ProductName+" would you like to add?");
+                            Console.WriteLine("How many "+item.ProductName+"would you like to add?");
                             string amount = Console.ReadLine();
-                            //_storeFrontBL.AddInventory
+                            
+                            _storeFrontBL.AddInventory(item,int.Parse(amount));
                             
                         }
                     }
@@ -64,6 +66,8 @@ namespace StoreUI
                     return MenuType.ShowInventoryMenu;
                 default:
                 Console.WriteLine("Invalid Selection");
+                Console.WriteLine("Press ENTER to continue");
+                    Console.ReadLine();
                     return MenuType.ShowInventoryMenu;
             }
          }
