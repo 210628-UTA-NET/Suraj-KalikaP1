@@ -19,7 +19,7 @@ namespace StoreModel{
 
         public override string ToString()
         {
-            return "ID: "+Id+"| Name: " + Name+"| Address: " + Address+"| Email: " +Email+"| Phone Number"+ PhoneNumber;
+            return "ID: "+Id+"| Name: " + Name+"| Address: " + Address+"| Email: " +Email+"| Phone Number: "+ PhoneNumber;
         }
     }
 
