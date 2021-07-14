@@ -33,6 +33,9 @@ namespace StoreDL
                 TotalPrice = (decimal)p_order.TotalPrice
             });
             _context.SaveChanges();
+
+
+
             return p_order;
         }
         public List<LineItems> GetInventory(StoreFront p_storeFront)
@@ -149,6 +152,24 @@ namespace StoreDL
                 x=> 
                 x.Id == p_lineItem.Id
             ).Quantity + amount;
+            
+            _context.SaveChanges();
+        
+            return p_lineItem;
+
+        }
+
+        public LineItems RemoveInventory(LineItems p_lineItem, int amount)
+        {
+                
+
+             _context.LineItems.First(
+                x=> 
+                x.Id == p_lineItem.Id
+            ).Quantity = _context.LineItems.First(
+                x=> 
+                x.Id == p_lineItem.Id
+            ).Quantity - amount;
             
             _context.SaveChanges();
         
