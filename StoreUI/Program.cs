@@ -41,6 +41,12 @@ namespace StoreUI
                     case MenuType.PlaceOrderMenu:
                         menu = menuFactory.GetMenu(MenuType.PlaceOrderMenu);
                         break;
+                    case MenuType.StoreOrderHistoryMenu:
+                        menu = menuFactory.GetMenu(MenuType.StoreOrderHistoryMenu);
+                        break;
+                    case MenuType.CustomerOrderHistoryMenu:
+                        menu = menuFactory.GetMenu(MenuType.CustomerOrderHistoryMenu);
+                        break;
                     case MenuType.Exit:
                         repeat = false;
                         break;
