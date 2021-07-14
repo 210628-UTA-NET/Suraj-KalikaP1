@@ -7,8 +7,6 @@ namespace StoreDL
     {
        List<Customer> GetAllCustomers(); 
 
-       Customer GetCustomer(Customer p_cust);
-
        Customer AddCustomer(Customer p_cust);
 
          List<Orders> GetOrders(Customer p_customer);

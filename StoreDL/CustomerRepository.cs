@@ -84,9 +84,5 @@ namespace StoreDL
             return customerOrders;
         }
 
-        public Customer GetCustomer(Customer p_cust)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
