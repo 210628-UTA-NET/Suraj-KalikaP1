@@ -119,6 +119,12 @@ namespace StoreUI
                                            Orders order = new Orders();
                                            order.TotalPrice = totalPrice;
                                           _storeFrontBL.AddOrder(storeFront,customer,order);
+                                          Console.WriteLine("Purchase Successful");
+                                          Console.WriteLine("Press Enter to go back to Main Menu");
+                                          Console.ReadLine();
+                                          shoppingCart.Clear();
+                                             shoppingQuantity.Clear();
+                                            return MenuType.MainMenu;
                                        }
                                            else
                                              {
