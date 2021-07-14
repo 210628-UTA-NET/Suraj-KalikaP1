@@ -22,7 +22,35 @@ namespace StoreUI
         }
         public void Menu()
         {
-            Console.WriteLine("Welcome to the Store Management Menu");
+            String asciiStoreManageMenu = 
+            @"
+
+ __    __     _                            _          _   _          
+/ / /\ \ \___| | ___ ___  _ __ ___   ___  | |_ ___   | |_| |__   ___ 
+\ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \  | __| '_ \ / _ \
+ \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |_| | | |  __/
+  \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/   \__|_| |_|\___|
+                                                                     
+ __ _                 
+/ _\ |_ ___  _ __ ___ 
+\ \| __/ _ \| '__/ _ \
+_\ \ || (_) | | |  __/
+\__/\__\___/|_|  \___|
+                      
+                                                          _   
+  /\/\   __ _ _ __   __ _  __ _  ___ _ __ ___   ___ _ __ | |_ 
+ /    \ / _` | '_ \ / _` |/ _` |/ _ \ '_ ` _ \ / _ \ '_ \| __|
+/ /\/\ \ (_| | | | | (_| | (_| |  __/ | | | | |  __/ | | | |_ 
+\/    \/\__,_|_| |_|\__,_|\__, |\___|_| |_| |_|\___|_| |_|\__|
+                          |___/                               
+                           _ 
+  /\/\   ___ _ __  _   _  / \
+ /    \ / _ \ '_ \| | | |/  /
+/ /\/\ \  __/ | | | |_| /\_/ 
+\/    \/\___|_| |_|\__,_\/   
+                             
+            ";
+            Console.WriteLine(asciiStoreManageMenu);
             Console.WriteLine("This is the Management Menu for " + _storeFront.Name +" Located at "+_storeFront.Address);
             Console.WriteLine("[2] Manage Store Inventory");
             Console.WriteLine("[1] View Store Order History");

@@ -20,8 +20,29 @@ namespace StoreUI
         _storeBL = p_storeBL;
     }
         public void Menu()
-        {
-            Console.WriteLine("Welcome to the Find Customer Menu!");
+        {   
+            String asciiFindCustomerMenu = 
+            @"
+            
+ __    __     _                            _          _   _          
+/ / /\ \ \___| | ___ ___  _ __ ___   ___  | |_ ___   | |_| |__   ___ 
+\ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \  | __| '_ \ / _ \
+ \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |_| | | |  __/
+  \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/   \__|_| |_|\___|
+                                                                     
+   ___ _           _     ___          _                            
+  / __(_)_ __   __| |   / __\   _ ___| |_ ___  _ __ ___   ___ _ __ 
+ / _\ | | '_ \ / _` |  / / | | | / __| __/ _ \| '_ ` _ \ / _ \ '__|
+/ /   | | | | | (_| | / /__| |_| \__ \ || (_) | | | | | |  __/ |   
+\/    |_|_| |_|\__,_| \____/\__,_|___/\__\___/|_| |_| |_|\___|_|   
+                                                                   
+                           _ 
+  /\/\   ___ _ __  _   _  / \
+ /    \ / _ \ '_ \| | | |/  /
+/ /\/\ \  __/ | | | |_| /\_/ 
+\/    \/\___|_| |_|\__,_\/   
+            ";
+            Console.WriteLine(asciiFindCustomerMenu);
             Console.WriteLine("How would you like to search for a Customer?");
             Console.WriteLine("[2] List of all Customers");
             Console.WriteLine("[1] Search By Name");
