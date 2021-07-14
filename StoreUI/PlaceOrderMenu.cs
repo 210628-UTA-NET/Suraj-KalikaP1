@@ -116,9 +116,22 @@ namespace StoreUI
                                        }
                                          if(endChoice =="1")
                                       {
+                                          
                                            Orders order = new Orders();
                                            order.TotalPrice = totalPrice;
                                           _storeFrontBL.AddOrder(storeFront,customer,order);
+                                          foreach(LineItems items in inventory)
+                                          {
+                                                 count = 0;
+                                                foreach(Products product in shoppingCart)
+                                                {
+                                                    if(product.Id == items.ProductId)
+                                                    {
+                                                        _storeFrontBL.RemoveInventory(items,shoppingQuantity[count]);
+                                                        count=+1;
+                                                    }
+                                                }
+                                          }
                                           Console.WriteLine("Purchase Successful");
                                           Console.WriteLine("Press Enter to go back to Main Menu");
                                           Console.ReadLine();
@@ -188,6 +201,18 @@ namespace StoreUI
                                            Orders order = new Orders();
                                            order.TotalPrice = totalPrice;
                                           _storeFrontBL.AddOrder(storeFront,customer,order);
+                                          foreach(LineItems items in inventory)
+                                          {
+                                                 count = 0;
+                                                foreach(Products product in shoppingCart)
+                                                {
+                                                    if(product.Id == items.ProductId)
+                                                    {
+                                                        _storeFrontBL.RemoveInventory(items,shoppingQuantity[count]);
+                                                        count=+1;
+                                                    }
+                                                }
+                                          }
                                           Console.WriteLine("Purchase Successful");
                                           Console.WriteLine("Press Enter to go back to Main Menu");
                                           Console.ReadLine();
