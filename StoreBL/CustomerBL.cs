@@ -16,7 +16,11 @@ namespace StoreBL
        
         public Customer AddCustomer(Customer p_cust)
         {
-            p_cust.Email.Contains("@");
+            if( !p_cust.Email.Contains("@"))
+            {
+                Console.WriteLine("EMail incorrect Format");
+                throw new System.FormatException();
+            }
             return _repo.AddCustomer(p_cust);
         }
 
@@ -29,5 +33,11 @@ namespace StoreBL
         {
             return _repo.GetAllCustomers();
         }
+
+        public List<Orders> GetOrders(Customer p_customer)
+        {
+            return _repo.GetOrders(p_customer);
+        }
+        
     }
 }

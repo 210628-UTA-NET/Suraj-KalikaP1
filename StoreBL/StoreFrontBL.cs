@@ -16,6 +16,11 @@ namespace StoreBL
 
         public LineItems AddInventory(LineItems p_lineitem, int amount)
         {
+            if(amount<0)
+            {
+                throw new System.ArithmeticException();
+            }
+            
            return _repo.AddInventory(p_lineitem,amount);
         }
 
@@ -37,6 +42,10 @@ namespace StoreBL
         public List<Products> GetProducts(StoreFront p_storeFront)
         {
             return _repo.GetProducts(p_storeFront);
+        }
+        public Orders AddOrder(StoreFront p_storeFront, Customer p_customer, Orders p_order)
+        {
+            return _repo.AddOrder(p_storeFront,p_customer,p_order);
         }
     }
 

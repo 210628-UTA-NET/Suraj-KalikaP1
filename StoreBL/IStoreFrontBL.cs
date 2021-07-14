@@ -12,5 +12,7 @@ namespace StoreBL
 
          LineItems AddInventory(LineItems p_lineitem, int amount);
          List<Orders> GetOrders(StoreFront p_storeFront);
+
+         Orders AddOrder(StoreFront p_storeFront, Customer p_customer, Orders p_order);
     }
 }
