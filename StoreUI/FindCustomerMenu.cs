@@ -23,9 +23,8 @@ namespace StoreUI
         {
             Console.WriteLine("Welcome to the Find Customer Menu!");
             Console.WriteLine("How would you like to search for a Customer?");
-            Console.WriteLine("[3] List of all Customers");
-            Console.WriteLine("[2] Search By Name");
-            Console.WriteLine("[1] Search by ID");
+            Console.WriteLine("[2] List of all Customers");
+            Console.WriteLine("[1] Search By Name");
             Console.WriteLine("[0] Go Back");
         }
 
@@ -39,10 +38,6 @@ namespace StoreUI
                 case "0":
                     return MenuType.CustomerMenu;
                 case "1":
-                Console.WriteLine("Please enter Customer ID");
-                //customer.Id = Console.ReadLine();
-                    return MenuType.FindCustomerMenu;
-                case "2":
                     Console.WriteLine("Please enter Customer Name");
                    customer.Name =  Console.ReadLine();
                   Console.WriteLine(_customerBL.FindCustomerByName(customer.Name));
@@ -71,7 +66,7 @@ namespace StoreUI
                          Console.ReadLine();
                          return MenuType.CustomerMenu;
                     } //Need to add onto here
-                case "3":
+                case "2":
                     return MenuType.ShowCustomerMenu;
                 default:
                     return MenuType.FindCustomerMenu;
