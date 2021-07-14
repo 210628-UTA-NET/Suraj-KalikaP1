@@ -7,11 +7,6 @@ namespace StoreDL.Entities
 {
     public partial class LineItem
     {
-        public LineItem()
-        {
-            Orders = new HashSet<Order>();
-        }
-
         public int Id { get; set; }
         public int? ProductId { get; set; }
         public int? StoreId { get; set; }
@@ -19,6 +14,5 @@ namespace StoreDL.Entities
 
         public virtual Products Product { get; set; }
         public virtual StoreFront Store { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

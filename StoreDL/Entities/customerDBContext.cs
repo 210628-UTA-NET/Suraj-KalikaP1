@@ -73,10 +73,10 @@ namespace StoreDL.Entities
                     .HasForeignKey(d => d.CustomerId)
                     .HasConstraintName("FK__Orders__Customer__04E4BC85");
 
-                entity.HasOne(d => d.LineItem)
+                entity.HasOne(d => d.Store)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.LineItemId)
-                    .HasConstraintName("FK__Orders__LineItem__01142BA1");
+                    .HasForeignKey(d => d.StoreId)
+                    .HasConstraintName("FK__Orders__StoreId__05D8E0BE");
             });
 
             modelBuilder.Entity<Products>(entity =>
