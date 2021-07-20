@@ -6,55 +6,55 @@ namespace StoreDL
 {
     public class StoreRepository : IStoreRepository
     {
-                private Entities.customerDBContext _context;
+                private StoreDBContext _context;
 
-        public StoreRepository(Entities.customerDBContext p_context)
+        public StoreRepository(StoreDBContext p_context)
         {
             _context = p_context;
         }     
         public List<StoreFront> GetAllStoreFronts()
         {
-            return _context.StoreFronts.Select(
-                store =>
-                    new StoreFront()
-                    {
-                        Id = store.Id,
-                        Name = store.StoreName,
-                        Address = store.Address
-                    }
-            ).ToList();
+            return _context.StoreFronts.Select(store =>  store ).ToList();
         }
-        public Orders AddOrder(StoreFront p_storeFront, Customer p_customer, Orders p_order)
+        public Order AddOrder(StoreFront p_storeFront, Customer p_customer, Order p_order)
         {
-            _context.Orders.Add(new Entities.Order{
+            _context.Orders.Add(new Order{
                 Id = p_order.Id,
-                StoreId = p_storeFront.Id,
-                CustomerId = p_customer.Id,
-                TotalPrice = (decimal)p_order.TotalPrice
+                storeId = p_storeFront.Id,
+                customerId = p_customer.Id,
+                TotalPrice = p_order.TotalPrice
             });
             _context.SaveChanges();
-
-
-
             return p_order;
         }
-        public List<LineItems> GetInventory(StoreFront p_storeFront)
+        public List<LineItem> GetInventory(StoreFront p_storeFront)
         {
-            List<LineItems> allInventory = getAllInventory();
-            List<LineItems> storeInventory = new List<LineItems>();
+            return _context.LineItems
+                    .Where(lineitem => lineitem.StoreFrontId == p_storeFront.Id)
+                    .Select(lineitem => lineitem)
+                    .ToList();
 
-            foreach(LineItems inventory in allInventory)
+
+            /*List<LineItem> allInventory = getAllInventory();
+            List<LineItem> storeInventory = new List<LineItem>();
+
+            foreach(LineItem inventory in allInventory)
             {
                 if(inventory.StoreId == p_storeFront.Id)
                     storeInventory.Add(inventory);
             }
-            return storeInventory;
+            return storeInventory;*/
         }
-        public List<LineItems>  getAllInventory()
+        public List<LineItem>  getAllInventory()
         {
-            List<LineItems> inventory=  _context.LineItems.Select(
+            return _context.LineItems.Select(lineitem => lineitem).ToList();
+
+
+
+
+            /*List<LineItem> inventory=  _context.LineItems.Select(
                 inventory =>
-                    new LineItems
+                    new LineItem
                     {   
                         Id = inventory.Id,
                         ProductId = (int)inventory.ProductId,
@@ -63,9 +63,9 @@ namespace StoreDL
                     }
             ).ToList();
 
-            List<Products> allProducts = _context.Products.Select(
+            List<Product> allProducts = _context.Products.Select(
                 prod =>
-                    new Products
+                    new Product
                     {
                         Id =  (int) prod.Id,
                         Name = prod.Name,
@@ -75,9 +75,9 @@ namespace StoreDL
                     }
             ).ToList();
 
-            foreach(LineItems lineItems in inventory)
+            foreach(LineItem lineItems in inventory)
             {
-                foreach(Products prod in allProducts )
+                foreach(Product prod in allProducts )
                 {
                     if(lineItems.ProductId == prod.Id){
                         lineItems.ProductName = prod.Name;
@@ -86,14 +86,19 @@ namespace StoreDL
                 }
             }
 
-            return inventory;
+            return inventory;*/
             
         }
-        public List<Orders> GetOrders(StoreFront p_storeFront)
+        public List<Order> GetOrders(StoreFront p_storeFront)
         {
-            List<Orders> allOrders = _context.Orders.Select(
+            return _context.Orders
+                .Where(order => order.storeId == p_storeFront.Id)
+                .Select(order => order)
+                .ToList();
+
+            /*List<Order> allOrders = _context.Orders.Select(
                 order=>
-                    new Orders
+                    new Order
                     {
                         Id = order.Id,
                         storeId = (int)order.StoreId,
@@ -101,47 +106,36 @@ namespace StoreDL
                         TotalPrice = (double)order.TotalPrice
                     }
             ).ToList();
-            List<Orders> storeOrders = new List<Orders>();
-            foreach(Orders order in allOrders)
+            List<Order> storeOrders = new List<Order>();
+            foreach(Order order in allOrders)
             {
                 if(order.storeId == p_storeFront.Id)
                     {
                         storeOrders.Add(order);
                     }
             }
-            return storeOrders;
+            return storeOrders;*/
         }
 
-        public List<Products> GetProducts(StoreFront p_storeFront)
-        {   
-            List<LineItems> storeInventory = GetInventory(p_storeFront);
-            List<Products> allProducts = _context.Products.Select(
-                prod =>
-                    new Products
-                    {
-                        Id =  (int) prod.Id,
-                        Name = prod.Name,
-                        Description = prod.Description,
-                        Category = prod.Category,
-                        Price = (double)prod.Price
-                    }
-            ).ToList();
-            List<Products> storeProducts = new List<Products>();  
-             foreach(Products prod in allProducts )
+        public List<Product> GetProducts(StoreFront p_storeFront)
+        {
+           List<LineItem> storeInventory = GetInventory(p_storeFront);
+            List<Product> allProducts = _context.Products.Select(prod => prod).ToList();
+            List<Product> storeProducts = new List<Product>();  
+             foreach(Product prod in allProducts )
              {
-                 foreach(LineItems lineItems in storeInventory)
+                 foreach(LineItem lineItems in storeInventory)
                 {
                  if(prod.Id== lineItems.ProductId)
                  {
                      storeProducts.Add(prod);
                  }
-
                 }
              }
              return storeProducts;
         }
 
-        public LineItems AddInventory(LineItems p_lineItem, int amount)
+        public LineItem AddInventory(LineItem p_lineItem, int amount)
         {
                 
 
@@ -159,7 +153,7 @@ namespace StoreDL
 
         }
 
-        public LineItems RemoveInventory(LineItems p_lineItem, int amount)
+        public LineItem RemoveInventory(LineItem p_lineItem, int amount)
         {
                 
 

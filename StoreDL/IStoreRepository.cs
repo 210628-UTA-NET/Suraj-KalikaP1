@@ -7,13 +7,13 @@ namespace StoreDL
   public interface IStoreRepository
     {
         List<StoreFront> GetAllStoreFronts();
-         List<LineItems> GetInventory(StoreFront p_storeFront);
+         List<LineItem> GetInventory(StoreFront p_storeFront);
 
-         LineItems AddInventory(LineItems p_lineItem, int amount);
-          LineItems RemoveInventory(LineItems p_lineItem, int amount);
-         List<Products> GetProducts(StoreFront p_storeFront);
-         List<Orders> GetOrders(StoreFront p_storeFront);
-         Orders AddOrder(StoreFront p_storeFront, Customer p_customer, Orders p_order);
+         LineItem AddInventory(LineItem p_lineItem, int amount);
+          LineItem RemoveInventory(LineItem p_lineItem, int amount);
+         List<Product> GetProducts(StoreFront p_storeFront);
+         List<Order> GetOrders(StoreFront p_storeFront);
+         Order AddOrder(StoreFront p_storeFront, Customer p_customer, Order p_order);
          
      }
 

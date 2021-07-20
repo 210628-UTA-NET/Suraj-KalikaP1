@@ -34,7 +34,7 @@ namespace StoreBL
             return _repo.GetAllCustomers();
         }
 
-        public List<Orders> GetOrders(Customer p_customer)
+        public List<Order> GetOrders(Customer p_customer)
         {
             return _repo.GetOrders(p_customer);
         }

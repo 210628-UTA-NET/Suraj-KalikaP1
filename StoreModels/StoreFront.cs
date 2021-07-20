@@ -14,7 +14,7 @@ namespace StoreModel
              public string Address{get;set;}
 
 
-         public List<Orders> Orders {get;set;}
+         public List<Order> Orders {get;set;}
 
         public override string ToString()
         {

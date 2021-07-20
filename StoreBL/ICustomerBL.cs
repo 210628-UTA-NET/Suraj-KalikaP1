@@ -16,7 +16,7 @@ namespace StoreBL
         Customer AddCustomer(Customer p_cust);
         Customer FindCustomerByName(String p_custName);
 
-         List<Orders> GetOrders(Customer p_customer);
+         List<Order> GetOrders(Customer p_customer);
     }
 
 

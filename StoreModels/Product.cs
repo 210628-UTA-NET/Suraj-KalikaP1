@@ -2,9 +2,9 @@ using System;
 
 namespace StoreModel
 {
-        public class Products
+        public class Product
         {
-                public Products(){}
+                public Product(){}
 
                 public int Id{get;set;}
                 public string Name{get;set;}

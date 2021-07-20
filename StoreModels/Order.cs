@@ -4,14 +4,13 @@ using System.Collections.Generic;
 namespace StoreModel
 {
 
-    public class Orders
+    public class Order
     {
-        public Orders(){}
+        public Order(){}
 
         public int Id{get;set;}
 
         public int storeId {get;set;}
-
         public int customerId{get;set;}
         public double TotalPrice{get;set;}
 
