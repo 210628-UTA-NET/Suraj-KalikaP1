@@ -31,7 +31,7 @@ jobs:
         # The name of the SonarQube project
         sonarProjectName: Suraj-KalikaP1
         # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
-        sonarOrganization: 210628-UTA-NET
+        sonarOrganization: 210628-uta-net
         dotnetBuildArguments: . 
         # Optional command arguments to 'dotnet test'
         dotnetTestArguments: . --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
