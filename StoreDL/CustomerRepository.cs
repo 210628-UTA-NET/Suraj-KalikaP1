@@ -9,7 +9,7 @@ namespace StoreDL
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private StoreDBContext _context;
+        private readonly StoreDBContext _context;
         
         public CustomerRepository(StoreDBContext p_context)
         {
