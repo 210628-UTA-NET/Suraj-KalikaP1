@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using StoreDL;
 using StoreBL;
 namespace StoreWebUI
@@ -24,11 +25,12 @@ namespace StoreWebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-         //   services.AddScoped<IStoreFrontBL, StoreFrontBL>();
-         //   services.AddScoped<IStoreRepository, StoreRepository>();
-          //  services.AddScoped<ICustomerBL, CustomerBL>();
-         //   services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddDbContext<StoreDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Reference2DB")));
+            services.AddScoped<IStoreFrontBL, StoreFrontBL>();
+            services.AddScoped<IStoreRepository, StoreRepository>();
+            services.AddScoped<ICustomerBL, CustomerBL>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
