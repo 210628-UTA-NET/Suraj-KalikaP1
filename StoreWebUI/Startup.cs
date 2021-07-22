@@ -25,11 +25,10 @@ namespace StoreWebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            services.AddScoped<IStoreRepository, StoreRepository>();
-            services.AddScoped<IStoreFrontBL, StoreFrontBL>();
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<ICustomerBL, CustomerBL>();
+         //   services.AddScoped<IStoreFrontBL, StoreFrontBL>();
+         //   services.AddScoped<IStoreRepository, StoreRepository>();
+          //  services.AddScoped<ICustomerBL, CustomerBL>();
+         //   services.AddScoped<ICustomerRepository, CustomerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
