@@ -9,7 +9,8 @@ namespace StoreDL
 
        Customer AddCustomer(Customer p_cust);
 
-         List<Order> GetOrders(Customer p_customer);
+         List<Order> GetOrders(int p_customerId);
        Customer FindCustomerByName(String p_name);
+       Customer FindCustomerById(int p_customerId);
     }
 }

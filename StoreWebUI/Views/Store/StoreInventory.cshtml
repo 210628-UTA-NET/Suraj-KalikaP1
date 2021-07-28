@@ -1,0 +1,43 @@
+  @model IEnumerable<StoreWebUI.Models.LineItemViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h2>Available Inventory</h2>
+    <a>@Html.ActionLink("Order History","StoreOrderHistory", new {p_Id = @TempData["store_Id"]}, new {@class="btn btn-secondary"})</a>
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ProductId</th>
+                <th>StoreFrontId</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var Li in Model)
+            {
+             <tr>
+                 <td>@Html.DisplayFor(item => Li.Id)</td>
+                 <td>@Html.DisplayFor(item => Li.ProductId)</td>
+                 <td>@Html.DisplayFor(item => Li.StoreFrontId)</td>
+                 <td>@Html.DisplayFor(item => Li.Quantity)</td>
+                 <td>
+                     @using(Html.BeginForm("StoreInventory","Store",FormMethod.Post))
+                     {
+                         <input name = "lineItem.Quantity" type="number" value="1">
+                         <input name = "lineItem.Id" type="hidden" value= "@Li.Id">
+                         <input name = "lineItem.ProductId" type="hidden" value= "@Li.ProductId">
+                         <input name = "lineItem.StoreFrontId" type="hidden" value= "@Li.StoreFrontId">
+                         <input name = "p_Id" value= @TempData["store_Id"] type="hidden">
+                         <button type = "submit" class="btn btn-secondary">Add</button>
+                     }
+                 </td>
+             </tr>   
+            }
+        </tbody>
+</body>
+</html>

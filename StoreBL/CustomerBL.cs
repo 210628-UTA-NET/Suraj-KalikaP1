@@ -13,7 +13,10 @@ namespace StoreBL
             _repo = p_repo;
         }
 
-       
+       public Customer FindCustomerById(int p_customerId)
+       {
+           return _repo.FindCustomerById(p_customerId);
+       }
         public Customer AddCustomer(Customer p_cust)
         {
             if( !p_cust.Email.Contains("@"))
@@ -34,9 +37,9 @@ namespace StoreBL
             return _repo.GetAllCustomers();
         }
 
-        public List<Order> GetOrders(Customer p_customer)
+        public List<Order> GetOrders(int p_customerId)
         {
-            return _repo.GetOrders(p_customer);
+            return _repo.GetOrders(p_customerId);
         }
         
     }

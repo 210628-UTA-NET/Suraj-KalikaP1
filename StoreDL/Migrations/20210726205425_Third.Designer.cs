@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreDL;
 
 namespace StoreDL.Migrations
 {
     [DbContext(typeof(StoreDBContext))]
-    partial class StoreDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210726205425_Third")]
+    partial class Third
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,20 +80,23 @@ namespace StoreDL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StoreFrontId")
+                    b.Property<int?>("StoreFrontId")
                         .HasColumnType("int");
 
                     b.Property<double>("TotalPrice")
                         .HasColumnType("float");
 
+                    b.Property<int>("customerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("storeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
-
                     b.HasIndex("StoreFrontId");
+
+                    b.HasIndex("customerId");
 
                     b.ToTable("Orders");
                 });
@@ -140,7 +145,6 @@ namespace StoreDL.Migrations
 
             modelBuilder.Entity("StoreModel.LineItem", b =>
                 {
-
                     b.HasOne("StoreModel.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -160,15 +164,13 @@ namespace StoreDL.Migrations
 
             modelBuilder.Entity("StoreModel.Order", b =>
                 {
-                    b.HasOne("StoreModel.Customer", null)
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("StoreModel.StoreFront", null)
                         .WithMany("Orders")
-                        .HasForeignKey("StoreFrontId")
+                        .HasForeignKey("StoreFrontId");
+
+                    b.HasOne("StoreModel.Customer", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("customerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -176,11 +178,6 @@ namespace StoreDL.Migrations
             modelBuilder.Entity("StoreModel.Customer", b =>
                 {
                     b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("StoreModel.Order", b =>
-                {
-                    b.Navigation("OrderList");
                 });
 
             modelBuilder.Entity("StoreModel.StoreFront", b =>

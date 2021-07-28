@@ -1,0 +1,64 @@
+@model IEnumerable<StoreWebUI.Models.OrderViewModel>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div style="display:inline-block;">
+         @using(Html.BeginForm("StoreOrderHistory","Store",FormMethod.Post))
+         {
+             <input name = "sort" value="priceAsc" type="hidden">
+             <input name = "p_Id" value= @TempData["store_Id"] type="hidden">
+             <button type = "submit">Sort By Ascending Price</button>
+         }
+        </div>
+        <div style="display:inline-block;">
+         @using(Html.BeginForm("StoreOrderHistory","Store",FormMethod.Post))
+         {
+             <input name = "sort" value="priceDesc" type="hidden">
+             <input name = "p_Id" value= @TempData["store_Id"] type="hidden">
+             <button type = "submit">Sort By Descending Price</button>
+         }
+        </div>
+        <div style="display:inline-block;">
+         @using(Html.BeginForm("StoreOrderHistory","Store",FormMethod.Post))
+         {
+             <input name = "sort" value="oldest" type="hidden">
+             <input name = "p_Id" value= @TempData["store_Id"] type="hidden">
+             <button type = "submit">Sort By Oldest to Latest</button>
+         }
+        </div>
+        <div style="display:inline-block;">
+         @using(Html.BeginForm("StoreOrderHistory","Store",FormMethod.Post))
+         {
+             <input name = "sort" value="latest" type="hidden">
+             <input name = "p_Id" value= @TempData["store_Id"] type="hidden">
+             <button type = "submit">Sort By Latest to Oldest</button>
+         }
+        </div>
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                <th>Store Id</th>
+                <th>Customer Id</th>
+                <th>Total Price</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(ord=> item.Id)</td>
+                        <td>@Html.DisplayFor(ord=> item.CustomerId)</td>
+                        <td>@Html.DisplayFor(ord => item.StoreFrontId)</td>
+                        <td>@Html.DisplayFor(ord => item.TotalPrice)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </body>
+</html>

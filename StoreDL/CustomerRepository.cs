@@ -9,7 +9,7 @@ namespace StoreDL
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly StoreDBContext _context;
+        private  StoreDBContext _context;
         
         public CustomerRepository(StoreDBContext p_context)
         {
@@ -24,22 +24,15 @@ namespace StoreDL
             return p_cust;
         }
 
+        public Customer FindCustomerById(int p_customerId)
+        {
+            return _context.Customers.Find(p_customerId);
+        }
         public Customer FindCustomerByName(String p_customerName)
         {
             return _context.Customers.AsNoTracking().FirstOrDefault(cust => cust.Name.Contains(p_customerName)); //If this works try changing this to a list and using Where instead of FirstOrDefault
 
-           /* List<Customer> allCustomers = GetAllCustomers();
-            foreach(Customer cust in allCustomers)
-            {   
-                if(p_customerName.Contains(cust.Name))
-                {
-                    return cust; // Will return the first Customer object if it contains the Inputted Name
-                                // Either Validation or improved logic to show List of Customers Necessary
-                }
-                    
-            }
-            
-           throw new System.IndexOutOfRangeException();*/
+          
         }
 
         public List<Customer> GetAllCustomers()
@@ -47,32 +40,15 @@ namespace StoreDL
             return _context.Customers.Select( cust => cust ).ToList(); 
         }
 
-        public List<Order> GetOrders(Customer p_customer)
+        public List<Order> GetOrders(int p_customerId)
         {
 
             return _context.Orders
-                .Where(order => order.customerId == p_customer.Id)
+                .Where(order => order.CustomerId == p_customerId)
                 .Select(order => order)
                 .ToList();
 
-            /*List<Order> allOrders = _context.Orders.Select(
-                order=>
-                    new Order
-                    {   Id = order.Id,
-                        storeId = (int)order.StoreId,
-                        customerId =(int)order.CustomerId,
-                        TotalPrice = (double)order.TotalPrice
-                    }
-            ).ToList();
-            List<Order> customerOrders = new List<Order>();
-            foreach(Order order in allOrders)
-            {
-                if(order.customerId == p_customer.Id)
-                    {
-                        customerOrders.Add(order);
-                    }
-            }
-            return customerOrders;*/
+            
         }
 
     }

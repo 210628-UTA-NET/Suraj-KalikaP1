@@ -1,0 +1,41 @@
+@model IEnumerable<StoreWebUI.Models.CustomerViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> </title>
+</head>
+<body>
+    <h2>Customer List:</h2>
+
+    <a type="button" class="btn btn-secondary" asp-action = "AddCustomer">Add Customer</a>
+    @using (Html.BeginForm("ViewCustomer","Customer", FormMethod.Post))
+    {
+        <input id="search" type="text" name="custName">
+        <button type="submit">Search</button>
+    }
+            <table class= "table table-dark table-hover">
+                <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                </thead>
+
+                <tbody>
+                    @foreach(var cust in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(customer => cust.Id)</td>
+                            <td>@Html.DisplayFor(customer => cust.Name)</td>
+                            <td>@Html.DisplayFor(customer => cust.Address)</td>
+                            <td>@Html.DisplayFor(customer => cust.PhoneNumber)</td>
+                            <td>@Html.DisplayFor(customer => cust.Email)</td>
+                            <td>@Html.ActionLink("Select", "ViewCustomer", new {p_id = cust.Id}, new{@class="btn btn-secondary"}) </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+</body>
+</html>

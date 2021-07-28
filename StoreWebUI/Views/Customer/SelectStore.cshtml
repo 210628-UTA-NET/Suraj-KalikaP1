@@ -1,0 +1,34 @@
+@model IEnumerable<StoreWebUI.Models.StoreFrontViewModel>
+@{
+    int cust_Id = Convert.ToInt32(Context.Request.Query["p_custId"]);   
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <h2>Select Store to Order From</h2>
+    <table class= "table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var storeFront in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(store => storeFront.Id)</td>
+                        <td>@Html.DisplayFor(store => storeFront.Name)</td>
+                        <td>@Html.DisplayFor(store => storeFront.Address)</td>
+                        <td>@Html.ActionLink("Create Order", "CreateOrder", new {p_id = cust_Id,p_storeId=storeFront.Id}, new{@class="btn btn-secondary"}) </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </body>
+</html>

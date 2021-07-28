@@ -1,0 +1,37 @@
+@model IList<StoreWebUI.Models.LineItemViewModel>
+
+<table class="table table-dark table-hover">
+        <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+        </thead>
+        <tbody>
+            @foreach(var lineItem in Model)
+            { 
+                <tr>
+                    <td>@Html.DisplayFor(item => lineItem.ProductId)</td>
+                    <td>@Html.DisplayFor(item => lineItem.Product.Name)</td>
+                    <td>@Html.DisplayFor(item => lineItem.Quantity)</td>
+                    <td>@Html.DisplayFor(item => lineItem.Product.Price)</td>
+                </tr>
+            }
+        </tbody>
+</table>
+<h2>Total Price: $@TempData["TotalPrice"]</h2>
+
+@using (Html.BeginForm("PlaceOrder","Customer",FormMethod.Post))
+{
+    <input name = "p_storeId" type="hidden" value= @TempData["store_Id"]>
+    <input name = "p_custId" type="hidden" value=  @TempData["cust_Id"]>
+    <button type = "submit" class = "btn btn-secondary">Place Order</button>
+}
+@using (Html.BeginForm("CancelOrder","Customer",FormMethod.Post))
+{
+    <input name = "p_storeId" type="hidden" value= @TempData["store_Id"]>
+    <input name = "p_custId" type="hidden" value=  @TempData["cust_Id"]>
+    <button type = "submit" class = "btn btn-secondary">Cancel Order</button>
+}

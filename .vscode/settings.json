@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/dcead1d4-3daf-440d-bb7a-87c700ca0174/resourceGroups/Suraj-Kalika-Demo/providers/Microsoft.Web/sites/StoreWebAppSuraj",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": "StoreWebUI\\Publish",
+    "appService.defaultWebAppToDeploy": ""
 }

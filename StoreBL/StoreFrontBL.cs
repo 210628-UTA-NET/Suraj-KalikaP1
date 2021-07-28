@@ -37,20 +37,31 @@ namespace StoreBL
         {
             return _repo.GetAllStoreFronts();
         }
-
-        public List<LineItem> GetInventory(StoreFront p_storeFront)
+        public StoreFront GetStoreFront(int p_storeFrontId)
         {
-            return _repo.GetInventory(p_storeFront);
+            return _repo.GetStoreFront(p_storeFrontId);
+        }
+        public List<LineItem> GetInventory(int p_storeFrontId)
+        {
+            return _repo.GetInventory(p_storeFrontId);
         }
 
+        public List<LineItem>  getAllInventory()
+        {
+            return _repo.getAllInventory();
+        }
         public List<Order> GetOrders(StoreFront p_storeFront)
         {
             return _repo.GetOrders(p_storeFront);
         }
 
-        public List<Product> GetProducts(StoreFront p_storeFront)
+        public List<Product> GetAllProducts()
         {
-            return _repo.GetProducts(p_storeFront);
+            return _repo.GetAllProducts();
+        }
+        public List<Product> GetProducts(int p_storeFrontId)
+        {
+            return _repo.GetProducts(p_storeFrontId);
         }
         public Order AddOrder(StoreFront p_storeFront, Customer p_customer, Order p_order)
         {

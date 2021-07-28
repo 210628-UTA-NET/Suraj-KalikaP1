@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StoreModel
 {
@@ -10,14 +12,19 @@ namespace StoreModel
 
         public int Id{get;set;}
 
-        public int storeId {get;set;}
-        public int customerId{get;set;}
+        [Required]
+        public int StoreFrontId {get;set;}
+        [Required]
+        public int CustomerId{get;set;}
         public double TotalPrice{get;set;}
+        [NotMapped]
+        public List<LineItem> OrderList{get;set;}
+        #nullable enable
 
         public override string ToString()
         {
-            return "ID: "+Id+" | storeId: "+ storeId+" | customerId: "
-            +customerId+" | Price $"+TotalPrice;
+            return "storeId: "+ StoreFrontId+" | customerId: "
+            +CustomerId+" | Price: $"+TotalPrice;
         }
 
     }

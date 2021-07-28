@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreDL;
 
 namespace StoreDL.Migrations
 {
     [DbContext(typeof(StoreDBContext))]
-    partial class StoreDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210727091629_Sixth")]
+    partial class Sixth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,6 +142,9 @@ namespace StoreDL.Migrations
 
             modelBuilder.Entity("StoreModel.LineItem", b =>
                 {
+                    b.HasOne("StoreModel.Order", null)
+                        .WithMany("OrderList")
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("StoreModel.Product", "Product")
                         .WithMany()

@@ -1,0 +1,32 @@
+@model IEnumerable<StoreWebUI.Models.StoreFrontViewModel>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>StoreFront Menu</title>
+    </head>
+    <body>
+        <h2>Stores:</h2>
+
+        <table class= "table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var storeFront in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(store => storeFront.Id)</td>
+                        <td>@Html.DisplayFor(store => storeFront.Name)</td>
+                        <td>@Html.DisplayFor(store => storeFront.Address)</td>
+                        <td>@Html.ActionLink("Select", "StoreInventory", new {p_id = storeFront.Id}, new{@class="btn btn-secondary"})</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </body>
+</html>
