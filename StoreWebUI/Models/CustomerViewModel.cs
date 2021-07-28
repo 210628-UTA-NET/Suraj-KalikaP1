@@ -6,7 +6,10 @@ namespace StoreWebUI.Models
 {
     public class CustomerViewModel
     {
-        
+        public CustomerViewModel()
+        {
+            
+        }
         public CustomerViewModel(Customer p_cust)
         {
             Id = p_cust.Id;
