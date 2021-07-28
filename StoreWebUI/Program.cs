@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Sinks.File;
 
 namespace StoreWebUI
 {
@@ -16,6 +17,7 @@ namespace StoreWebUI
         {
             Log.Logger = new LoggerConfiguration()
             .WriteTo.Console()
+            .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
 
             Log.Information("Started Logger! Hello World!");
