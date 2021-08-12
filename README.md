@@ -29,4 +29,3 @@ Place orders for customer.
 
 Fix Orders so that orders are able to place multiple different items in the shopping cart.
 Format data such as Phone Numbers and Emails to create a better and more understandable display
-Wow improvement to be done 2
