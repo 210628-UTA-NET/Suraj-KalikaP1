@@ -9,15 +9,15 @@ This webapp was created to learn ASP.NET MVC and other technologies listed below
 
 ASP.NET MVC
 
-Entity Framework Core As ORM
+Entity Framework Core As ORM - Version 5.0.8
 
 Microsoft Azure SQL database
 
 Web app service hosted by Azure
 
-Xunit for Unit Testing
+Xunit for Unit Testing - Version 2.4.1
 
-Serilog for Logging
+Serilog for Logging - Version 2.10.0
 
 Github Actions for CI/CD Pipeline
 
