@@ -43,4 +43,4 @@ Fix Orders so that orders are able to place multiple different items in the shop
 
 Format data such as Phone Numbers and Emails to create a better and more understandable display
 
-Make user information more secured(passwords aren't currently encrypted).
+Make customer information more secured(passwords aren't currently encrypted).
