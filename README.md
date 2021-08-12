@@ -17,7 +17,7 @@ Web app service hosted by Azure
 
 Xunit for Unit Testing - Version 2.4.1
 
-Serilog for Logging - Version 2.10.0
+Serilog for Logging - Version 2.10
 
 Github Actions for CI/CD Pipeline
 
