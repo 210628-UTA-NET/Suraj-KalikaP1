@@ -52,3 +52,11 @@ Fix Orders so that orders are able to place multiple different items in the shop
 Format data such as Phone Numbers and Emails to create a better and more understandable display
 
 Make customer information more secured(passwords aren't currently encrypted).
+
+#Deployment
+
+Requires .Net 5 framework to run locally with : dotnet run
+
+#Author
+
+Suraj Kalika
