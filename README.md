@@ -53,10 +53,10 @@ Format data such as Phone Numbers and Emails to create a better and more underst
 
 Make customer information more secured(passwords aren't currently encrypted).
 
-#Deployment
+# Deployment
 
 Requires .Net 5 framework to run locally with : dotnet run
 
-#Author
+# Author
 
 Suraj Kalika
