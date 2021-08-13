@@ -26,18 +26,25 @@ SonarCloud for Code analysis
 
 C#
 
-# Features
+# Features:
 
+1. Easily Manage a store or a chain of stores(Such as a computer chain store)
 
-Easily Manage a store or a chain of stores(Such as a computer chain store)
+1. Easy to understand UI by Employees who are using the app. 
 
-Easy to understand UI by Employees who are using the app. 
+1. Easy registration for new customers/users.
 
-Easy registration for new customers.
+1. View Customer Order History.
 
-Easy access to order history(via store location or customer) and Inventory replenishment.
+1. Search for a Customer
 
-Place orders for customer.
+1. View Store Order History.
+
+1. Replenish Store Inventory.
+
+1. Add items to a Shopping Cart.
+
+1. Place orders for customer.
 
 # To-do list:
 Fix Orders so that orders are able to place multiple different items in the shopping cart.
